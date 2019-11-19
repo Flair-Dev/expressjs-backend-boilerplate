@@ -1,0 +1,7 @@
+.idea
+node_modules
+logs
+.env
+combined.log
+error.log
+uploads/

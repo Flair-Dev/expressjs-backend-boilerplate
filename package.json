@@ -1,0 +1,70 @@
+{
+  "name": "expressjs-backend-boilerplate",
+  "version": "1.0.0",
+  "description": "Backend boilerplate for Flair Dev team.",
+  "main": "app.js",
+  "scripts": {
+    "start": "NODE_ENV=production node src/app.js",
+    "start:dev": "NODE_ENV=development nodemon $NODE_DEBUG_OPTION src/app.js",
+    "test": "NODE_ENV=test ./node_modules/mocha/bin/mocha ./test/**/*test.js --timeout 4000 --exit",
+    "start:local": "NODE_ENV=development node $NODE_DEBUG_OPTION src/app.js",
+    "lint": "./node_modules/.bin/eslint  . ",
+    "lint:fix": "./node_modules/.bin/eslint  . --fix",
+    "check:security": "npm audit",
+    "check": "npm run check:security && npm run lint",
+    "delete-merged-branches": "git branch --merged | egrep -v '(^\\*|master|dev)' | xargs git branch -d",
+    "show-merged-branches": "git branch --merged | egrep -v '(^\\*|master|dev)'"
+  },
+  "config": {
+    "ghooks": {
+      "pre-push": "npm test",
+      "pre-commit": "npm run lint"
+    }
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Flair-Dev/expressjs-backend-boilerplate.git"
+  },
+  "author": "Ruslan Glaznyov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Flair-Dev/expressjs-backend-boilerplate/issues"
+  },
+  "homepage": "https://github.com/Flair-Dev/expressjs-backend-boilerplate#readme",
+  "dependencies": {
+    "@hapi/joi": "^16.1.7",
+    "awilix": "^4.2.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-validation": "^1.0.3",
+    "fs-extra": "^8.1.0",
+    "helmet": "^3.21.2",
+    "http-status": "^1.4.1",
+    "joi": "^14.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
+    "moment-timezone": "^0.5.27",
+    "mongoose": "^5.7.11",
+    "mongoose-beautiful-unique-validation": "^7.1.1",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "qs": "^6.9.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "dotenv": "^8.2.0",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "faker": "^4.1.0",
+    "ghooks": "^2.0.4",
+    "mocha": "^6.2.2",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.19.4",
+    "supertest": "^4.0.2"
+  }
+}
